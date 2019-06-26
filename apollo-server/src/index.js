@@ -1,39 +1,19 @@
-const { ApolloServer, gql } = require('apollo-server');
+require('dotenv').config();
+
+const { ApolloServer} = require('apollo-server');
+const MovieAPI = require('./datasources/movie');
+const typeDefs = require('./schema');
+const resolvers = require('./resolvers');
 
 const dataSources = () => ({
-    movieAPI: new 
+    movieAPI: new MovieAPI()
 });
 
-const typeDefs = gql`
-    type Book {
-        title: String
-        author: String
-    }
-
-    type Query {
-        books: [Book]
-    }
-    `;
-
-  const resolvers = {
-    Query: {
-        books: () => books,
-    },
-  };  
-
-  const books = [
-      {
-          title: 'The Davinci code',
-          author: 'Dan brown',
-          year: 1990
-      },
-      {
-        title: 'Angels and deamons',
-        author: 'Dan brown'
-    }
-  ]
-
-const server = new ApolloServer({typeDefs, resolvers});
+const server = new ApolloServer({
+    typeDefs, 
+    resolvers,
+    dataSources
+});
 
 server.listen().then(({ url }) => {
     console.log(`Server is ready at ${ url}`);
