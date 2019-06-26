@@ -1,0 +1,34 @@
+{
+  "name": "appollo-server",
+  "version": "0.0.1",
+  "description": "appollo server connecting to REST endpoint and another datasource",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/buddhikasemasinghe/appllo-suspencifier.git"
+  },
+  "keywords": [
+    "graphql",
+    "node",
+    "express",
+    "appollo"
+  ],
+  "author": "Buddhika Semasinghe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/buddhikasemasinghe/appllo-suspencifier/issues"
+  },
+  "homepage": "https://github.com/buddhikasemasinghe/appllo-suspencifier#readme",
+  "dependencies": {
+    "apollo-datasource": "^0.5.0",
+    "apollo-datasource-rest": "^0.5.0",
+    "apollo-server": "^2.6.4",
+    "dotenv": "^8.0.0",
+    "graphql": "^14.3.1",
+    "nodemon": "^1.19.1"
+  }
+}
