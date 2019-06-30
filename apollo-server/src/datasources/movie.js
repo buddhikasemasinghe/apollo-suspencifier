@@ -50,7 +50,7 @@ class MovieAPI extends RESTDataSource {
             id: image.id,
             height: image.height,
             width: image.width,
-            filePath: this.imageAPI+image.filePath
+            filePath: this.imageAPI+image.file_path
         }
     }
 

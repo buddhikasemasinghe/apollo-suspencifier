@@ -1,6 +1,5 @@
 import React from "react";
 import gql from "graphql-tag";
-import { Query } from "react-apollo";
 import { Spinner } from "../components/Spinner";
 import { useQuery } from "react-apollo-hooks";
 import {
