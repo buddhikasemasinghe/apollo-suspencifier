@@ -31,7 +31,6 @@ class MovieAPI extends RESTDataSource {
     async searchMovies(query) {
         const apiPath = `search/movie?api_key=${this.apiKey}&language=en-US&query=${query}&page=1&include_adult=false`;
         const response = await this.get(apiPath);
-        console.log(response.results);
         return Array.isArray(response.results) ? response.results.map(movie => this.movieReducer(movie)) : [];
     }
 

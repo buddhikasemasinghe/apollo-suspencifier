@@ -1,18 +1,29 @@
-import React from 'react';
-import {Router} from '@reach/router';
-import './App.css';
-import {Navigation} from "./pages/Navigation";
-import {Authors} from "./pages/Authors";
-import {AuthorDetails} from "./pages/AuthorDetails";
+import React from "react";
+import { Router } from "@reach/router";
+import "./App.css";
+import { Navigation } from "./pages/Navigation";
+import { MovieSearch } from "./pages/MovieSearch";
+import { MovieReviews } from "./pages/MovieReviews";
+import { MovieDetails } from "./pages/MovieDetails";
+import { Movies } from "./pages/Movies";
+import { ApolloProvider } from "react-apollo";
+import { Client } from "./ApolloClient";
+import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
 
 function App() {
   return (
-    <Router>
-      <Navigation default>
-          <Authors default/>
-          <AuthorDetails path="details"/>
-      </Navigation>
-    </Router>
+    <ApolloProvider client={Client}>
+      <ApolloHooksProvider client={Client}>
+        <Router>
+          <Navigation default>
+            <MovieSearch default />
+            <Movies path="movies" />
+            <MovieDetails path="movieDetails" />
+            <MovieReviews path="movieReviews" />
+          </Navigation>
+        </Router>
+      </ApolloHooksProvider>
+    </ApolloProvider>
   );
 }
 
