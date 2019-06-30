@@ -9,6 +9,7 @@ import { Movies } from "./pages/Movies";
 import { ApolloProvider } from "react-apollo";
 import { Client } from "./ApolloClient";
 import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
+import "semantic-ui-css/semantic.min.css";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
             <MovieSearch default />
             <Movies path="movies" />
             <MovieDetails path="movieDetails" />
-            <MovieReviews path="movieReviews" />
+            <MovieReviews path="moviewReview" />
           </Navigation>
         </Router>
       </ApolloHooksProvider>

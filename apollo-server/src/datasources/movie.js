@@ -15,7 +15,7 @@ class MovieAPI extends RESTDataSource {
             released: movie.release_date,
             popularity: movie.popularity,
             poster: this.imageAPI+movie.poster_path,
-            logo: movie.logo_path
+            overview: movie.overview
         }
     }
 
@@ -28,6 +28,42 @@ class MovieAPI extends RESTDataSource {
         }
     }
 
+    movieDetailsReducer(movie){
+        return {
+            id: movie.id,
+            title: movie.title,
+            rating: movie.vote_average,
+            votes: movie.vote_count,
+            poster: this.imageAPI+movie.poster_path,
+            backdrop: this.imageAPI+movie.backdrop_path,
+            overview: movie.overview,
+            budget: movie.budget,
+            revenue: movie.revenue,
+            runtime: movie.runtime,
+            productionCountries: movie.production_countries.map((country) => country.name),
+            genres: movie.genres.map((genre) => genre.name)
+        }
+    }
+
+    movieImageReducer(image){
+        return {
+            id: image.id,
+            height: image.height,
+            width: image.width,
+            filePath: this.imageAPI+image.filePath
+        }
+    }
+
+    movieVideoReducer(video){
+        return {
+            id: video.id,
+            key: video.key,
+            name: video.name,
+            size: video.size,
+            type: video.type
+        }
+    }
+
     async searchMovies(query) {
         const apiPath = `search/movie?api_key=${this.apiKey}&language=en-US&query=${query}&page=1&include_adult=false`;
         const response = await this.get(apiPath);
@@ -35,8 +71,30 @@ class MovieAPI extends RESTDataSource {
     }
 
     async getReview(movieId) {
-        const response = await this.get(`${movieId} /reviews?api_key= ${this.apiKey} `);
+        const response = await this.get(`${movieId} /reviews?api_key=${this.apiKey} `);
         return Array.isArray(response.results) ? response.results.map(review => this.reviewReducer(review)) : [];
+    }
+
+    async getMovieDetails(movieId) {
+        console.log('Helloo'+movieId);
+        const response = await this.get(`/movie/${movieId}?api_key=${this.apiKey} `);
+        console.log(response);
+        return this.movieDetailsReducer(response);
+    }
+
+    async getMovieImages(movieId) {
+        const response = await this.get(`/movie/${movieId}/images?api_key=${this.apiKey} `);
+        return Array.isArray(response.backdrops) ? response.backdrops.map(image => this.movieImageReducer(image)) : [];
+    }
+
+    async getMovieVideos(movieId) {
+        const response = await this.get(`/movie/${movieId}/videos?api_key=${this.apiKey} `);
+        return Array.isArray(response.results) ? response.results.map(video => this.movieVideoReducer(video)) : [];
+    }
+
+    async getSimilarMovies(movieId) {
+        const response = await this.get(`/movie/${movieId}/similar?api_key=${this.apiKey} `);
+        return Array.isArray(response.results) ? response.results.map(movie => this.movieReducer(movie)) : [];
     }
 }
 
