@@ -44,6 +44,7 @@ const typedefs = gql`
         name: String
         size: Int
         type: String
+        source: String
     }
 
     type Query {

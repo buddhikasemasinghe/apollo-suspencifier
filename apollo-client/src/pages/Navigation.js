@@ -14,7 +14,7 @@ export function Navigation({ children, location }) {
           padding: "0 16px"
         }}
       >
-        <Match path="/:login">
+        <Match path="/:search">
           {({ match }) => (
             <Link
               to="/"
@@ -27,22 +27,7 @@ export function Navigation({ children, location }) {
                 fontSize: 16
               }}
             >
-              {match ? (
-                "👈 Back"
-              ) : (
-                <>
-                  <IconMovie
-                    height={24}
-                    width={24}
-                    style={{
-                      verticalAlign: "middle",
-                      paddingBottom: ".2rem",
-                      marginRight: 8
-                    }}
-                  />
-                  Movie Database
-                </>
-              )}
+              {match ? "👈 Back" : <>Home</>}
             </Link>
           )}
         </Match>
@@ -52,8 +37,4 @@ export function Navigation({ children, location }) {
       </React.Suspense>
     </>
   );
-}
-
-function IconMovie(props) {
-  return <div> Movie</div>;
 }

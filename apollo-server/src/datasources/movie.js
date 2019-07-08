@@ -60,7 +60,8 @@ class MovieAPI extends RESTDataSource {
             key: video.key,
             name: video.name,
             size: video.size,
-            type: video.type
+            type: video.type,
+            source: video.site.toLowerCase()
         }
     }
 
@@ -76,9 +77,7 @@ class MovieAPI extends RESTDataSource {
     }
 
     async getMovieDetails(movieId) {
-        console.log('Helloo'+movieId);
         const response = await this.get(`/movie/${movieId}?api_key=${this.apiKey} `);
-        console.log(response);
         return this.movieDetailsReducer(response);
     }
 
