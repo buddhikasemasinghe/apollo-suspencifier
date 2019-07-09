@@ -10,21 +10,24 @@ import { ApolloProvider } from "react-apollo";
 import { Client } from "./ApolloClient";
 import { ApolloProvider as ApolloHooksProvider } from "react-apollo-hooks";
 import "semantic-ui-css/semantic.min.css";
+import SuspenseContext from "./SuspenseContext";
 
 function App() {
   return (
-    <ApolloProvider client={Client}>
-      <ApolloHooksProvider client={Client}>
-        <Router>
-          <Navigation default>
-            <MovieSearch default />
-            <Movies path="movies" />
-            <MovieDetails path="movieDetails" />
-            <MovieReviews path="moviewReview" />
-          </Navigation>
-        </Router>
-      </ApolloHooksProvider>
-    </ApolloProvider>
+    <SuspenseContext.Provider value={{ suspend: false }}>
+      <ApolloProvider client={Client}>
+        <ApolloHooksProvider client={Client}>
+          <Router>
+            <Navigation default>
+              <MovieSearch default />
+              <Movies path="movies" />
+              <MovieDetails path="movieDetails" />
+              <MovieReviews path="moviewReview" />
+            </Navigation>
+          </Router>
+        </ApolloHooksProvider>
+      </ApolloProvider>
+    </SuspenseContext.Provider>
   );
 }
 

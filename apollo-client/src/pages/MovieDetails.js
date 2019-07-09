@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Container,
   Grid,
@@ -13,6 +13,7 @@ import { Spinner } from "../components/Spinner";
 import { useQuery } from "react-apollo-hooks";
 import PlaceHolder from "../components/PlaceHolder";
 import { navigate } from "@reach/router";
+import SuspenseContext from "../SuspenseContext";
 
 const MOVIE_DETAILS = gql`
   query MovieDetail($movieId: ID!) {
@@ -112,9 +113,10 @@ const MovieSummary = ({ movie }) => (
 );
 
 const MovieImages = ({ movieId }) => {
+  const { suspend } = useContext(SuspenseContext);
   const { data, loading, error } = useQuery(MOVIE_IMAGES, {
     variables: { movieId: movieId },
-    suspend: true
+    suspend: suspend
   });
   if (loading) return <PlaceHolder />;
   if (error) return <p>ERROR</p>;
@@ -125,9 +127,10 @@ const MovieImages = ({ movieId }) => {
 };
 
 const MovieVideos = ({ movieId }) => {
+  const { suspend } = useContext(SuspenseContext);
   const { data, loading, error } = useQuery(MOVIE_VIDEOS, {
     variables: { movieId: movieId },
-    suspend: true
+    suspend: suspend
   });
   if (loading) return <PlaceHolder />;
   if (error) return <p>ERROR</p>;
@@ -144,9 +147,10 @@ const MovieVideos = ({ movieId }) => {
 };
 
 const MoviesRelated = ({ movieId }) => {
+  const { suspend } = useContext(SuspenseContext);
   const { data, loading, error } = useQuery(SIMILAR_MOVIES, {
     variables: { movieId: movieId },
-    suspend: true
+    suspend: suspend
   });
   if (loading) return <PlaceHolder />;
   if (error) return <p>ERROR</p>;
