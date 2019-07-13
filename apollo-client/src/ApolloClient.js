@@ -7,5 +7,8 @@ export const Client = new ApolloClient({
   cache,
   link: new HttpLink({
     uri: "http://localhost:4000/graphql"
-  })
+  }),
+  defaultOptions: {
+    fetchPolicy: "no-cache"
+  }
 });

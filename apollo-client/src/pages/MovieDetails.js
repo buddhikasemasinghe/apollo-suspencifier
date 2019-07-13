@@ -66,9 +66,10 @@ export const MovieDetails = props => {
   const {
     state: { movieId }
   } = props.location;
+  const { suspend } = useContext(SuspenseContext);
   const { data, loading, error } = useQuery(MOVIE_DETAILS, {
     variables: { movieId: movieId },
-    suspend: true
+    suspend: suspend
   });
   if (loading) return <Spinner loadingText="Please wait .." />;
   if (error) return <p>ERROR</p>;

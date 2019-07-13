@@ -14,7 +14,7 @@ import SuspenseContext from "./SuspenseContext";
 
 function App() {
   return (
-    <SuspenseContext.Provider value={{ suspend: false }}>
+    <SuspenseContext.Provider value={{ suspend: true }}>
       <ApolloProvider client={Client}>
         <ApolloHooksProvider client={Client}>
           <Router>
