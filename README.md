@@ -1,4 +1,4 @@
-# React Suspense with Appllo
+# React Suspense with Apollo
  
 A learning guide to experiment React Suspense features with GraphQL server. This is my first hands on experience in GraphQL.
 
