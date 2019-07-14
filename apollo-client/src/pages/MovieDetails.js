@@ -14,6 +14,7 @@ import { useQuery } from "react-apollo-hooks";
 import PlaceHolder from "../components/PlaceHolder";
 import { navigate } from "@reach/router";
 import SuspenseContext from "../SuspenseContext";
+import ImageSuspense from "../components/ImageSuspense";
 
 const MOVIE_DETAILS = gql`
   query MovieDetail($movieId: ID!) {
@@ -122,9 +123,17 @@ const MovieImages = ({ movieId }) => {
   if (loading) return <PlaceHolder />;
   if (error) return <p>ERROR</p>;
   const images = data.movieImages.map((image, i) => (
-    <Image key={i} src={image.filePath} />
+    // <Image key={i} src={image.filePath} />
+    <Grid.Column key={i}>
+      <ImageSuspense image={image.filePath} nr={i} />
+    </Grid.Column>
   ));
-  return <ImageGroup size="small">{images}</ImageGroup>;
+  // return <ImageGroup size="small">{images}</ImageGroup>;
+  return (
+    <Grid relaxed columns={4}>
+      {images}
+    </Grid>
+  );
 };
 
 const MovieVideos = ({ movieId }) => {

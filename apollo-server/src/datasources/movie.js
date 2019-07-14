@@ -5,7 +5,8 @@ class MovieAPI extends RESTDataSource {
         super();
         this.baseURL = process.env.MOVIE_DB_API;
         this.apiKey = process.env.MOVIE_DB_API_KEY
-        this.imageAPI = process.env.MOVIE_DB_IMAGE_API
+        this.imageAPI = `${process.env.MOVIE_DB_IMAGE_API}w500`;
+        this.imageHighRes = `${process.env.MOVIE_DB_IMAGE_API}w1280`;
     }
 
     movieReducer(movie){
@@ -50,7 +51,7 @@ class MovieAPI extends RESTDataSource {
             id: image.id,
             height: image.height,
             width: image.width,
-            filePath: this.imageAPI+image.file_path
+            filePath: `${this.imageHighRes}${image.file_path}`
         }
     }
 
