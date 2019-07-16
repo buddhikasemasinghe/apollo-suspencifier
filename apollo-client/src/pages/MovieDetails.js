@@ -83,9 +83,9 @@ export const MovieDetails = props => {
       <Grid>
         <Grid.Row>
           <Grid.Column width={12}>
-            <MovieSummary movie={movie}></MovieSummary>
+            <MovieSummary movie={movie}/>
           </Grid.Column>
-          <Grid.Column width={4}></Grid.Column>
+          <Grid.Column width={4}/>
         </Grid.Row>
         <Grid.Row>
           <Grid.Column width={12}>

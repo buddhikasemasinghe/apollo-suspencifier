@@ -53,7 +53,7 @@ const ImageSuspense = ({ image, nr }) => {
         src="https://picsum.photos/id/44/150/85"
         alt={`img_small_${nr}`}
       />
-      <Style.Loader>{"Loading..."}</Style.Loader>
+      <Style.Loader />
     </ImageContainer>
   );
   return suspend ? (

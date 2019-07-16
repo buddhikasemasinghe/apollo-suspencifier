@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 import { Link, Match } from "@reach/router";
 import { Spinner } from "../components/Spinner";
 
@@ -32,9 +32,9 @@ export function Navigation({ children, location }) {
           )}
         </Match>
       </nav>
-      <React.Suspense fallback={<Spinner loadingText="Suspense" />}>
+      <Suspense fallback={<Spinner loadingText="Suspense Routing" />}>
         {children}
-      </React.Suspense>
+      </Suspense>
     </>
   );
 }

@@ -22,7 +22,7 @@ function App() {
               <MovieSearch default />
               <Movies path="movies" />
               <MovieDetails path="movieDetails" />
-              <MovieReviews path="moviewReview" />
+              <MovieReviews path="movieReview" />
             </Navigation>
           </Router>
         </ApolloHooksProvider>
