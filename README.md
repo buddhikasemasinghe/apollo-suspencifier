@@ -33,7 +33,7 @@ This project is inspired by Dan Abramov's talk in [React Fest](https://www.youtu
 ### Node/Express Server
 `cd apollo-server`
 
-> You need to create an account in [The moview database](https://developers.themoviedb.org) then copy API keu
+> You need to create an account in [The movie database](https://developers.themoviedb.org) then copy API key
 > * `move .env.template .env`
 > * replace MOVIE_DB_API key
 
@@ -51,3 +51,7 @@ This project is inspired by Dan Abramov's talk in [React Fest](https://www.youtu
 
  ## Testing
  Todo
+
+ #### Slides
+ [here](React-Suspense.pdf)
+
