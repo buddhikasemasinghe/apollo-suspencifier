@@ -44,7 +44,7 @@ export const Movies = props => {
 
 const MovieList = ({ data }) => {
   const movieList =
-    data && data.search.length ? movieGrids(data.search) : <div></div>;
+    data && data.search.length ? movieGrids(data.search) : <div/>;
   return <Grid columns={3}>{movieList}</Grid>;
 };
 
